@@ -1,0 +1,58 @@
+%YAML 1.1
+---
+E@onBiometricAuth:
+  port: auth
+S@waitOperator:
+  timeout: 10
+A@readPlateIN: {}
+E@readBadge:
+  port: readBadge
+S@waitBio:
+  timeout: 60
+A@readBadge:
+  port: readBadge
+  remotemethod: ClientService.onGateReadBadge
+E@onBiometricNoAuth:
+  port: noauth
+A@Cancel:
+  port: Cancel
+  remotemethod: ClientService.onError
+E@onBiometricError:
+  port: error
+A@verifyBiometric:
+  port: verifyBiometric
+  remotemethod: ClientService.onGateVerifyBiometric
+S@waitUid:
+  timeout: 10
+A@acquireBiometric:
+  port: acquireBiometric
+  remotemethod: ClientService.onGateAcquireBiometric
+A@acquireBadge:
+  port: acquireBadge
+  remotemethod: ClientService.onGateAcquireBadge
+A@verifyBio:
+  action: verify
+E@verifyBiometric:
+  port: verifyBiometric
+E@onBiometricEnroll:
+  port: enroll
+E@acquireBadge:
+  port: acquireBadge
+S@Start: {}
+E@beforeReaderInput: {}
+A@checkUid: {}
+E@acquireBiometric:
+  port: acquireBiometric
+A@acquireBio:
+  action: enroll
+E@onBiometricTimeout:
+  port: timeout
+E@operatorOpen:
+  flag: true
+E@operatorSoftOpen:
+  port: authPeople
+A@sendPermission: {}
+E@readerInput: {}
+A@openGate:
+  flag: true
+  pulse: 0.5

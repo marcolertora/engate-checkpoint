@@ -1,0 +1,14 @@
+stations:
+  ENROLL:
+    legacy_lane_id: 1
+    badge:
+      factory: EnrollFAKEBADGE
+      fake_badge_code: A1238712387123aa
+      delay: 10.0
+      # factory: EnrollFKLIGHT
+      # host: 172.16.50.199
+    biometric:
+      factory: EnrollFAKEBIOMETRIC
+      fake_verify_template: '77867F597293876F72'
+      # fake_verify_score: 10
+      # host: 172.16.50.149

@@ -1,0 +1,227 @@
+%YAML 1.1
+---
+VIRTUAL@OPEN@JTIS:
+  name: Virtuale Jtis
+  edges:
+  - from: A@checkUid@603
+    to: A@setTransitStatus@968
+    through: L@ALLOWED
+    status: AUTH
+  - from: A@checkUid@603
+    to: A@setTransitStatus@968
+    status: NO_AUTH
+  - from: A@setTransitStatus@968
+    to: S@Start
+  - from: A@startTransit@310
+    to: A@checkUid@603
+    checks:
+    - PLATE
+  - from: S@Start
+    to: A@startTransit@310
+    through: E@readerInput
+ENROLL@OPEN:
+  name: Acquisizione Badge + Bio
+  edges:
+  - from: A@acquireBio@732
+    to: S@waitBio
+  - from: A@acquireBiometric@784
+    to: S@Start
+  - from: A@acquirePic@504
+    to: S@waitPic
+  - from: A@acquirePicture@802
+    to: S@Start
+  - from: A@Cancel@170
+    to: S@Start
+  - from: A@Cancel@590
+    to: S@Start
+  - from: A@Cancel@982
+    to: S@Start
+  - from: A@readBadge@273
+    to: S@Start
+  - from: A@verifyBio@198
+    to: S@waitBio
+  - from: A@verifyBiometric@018
+    to: S@Start
+  - from: S@Start
+    to: S@waitUid
+    through: E@readBadge
+  - from: S@Start
+    to: A@acquirePic@504
+    through: E@acquirePicture
+  - from: S@Start
+    to: A@verifyBio@198
+    through: E@verifyBiometric
+  - from: S@Start
+    to: A@acquireBio@732
+    through: E@acquireBiometric
+  - from: S@waitBio
+    to: A@verifyBiometric@018
+    through: E@onBiometricAuth
+  - from: S@waitBio
+    to: A@Cancel@170
+    through: E@Timeout
+  - from: S@waitBio
+    to: A@verifyBiometric@018
+    through: E@onBiometricNoAuth
+  - from: S@waitBio
+    to: A@Cancel@170
+    through: E@onBiometricError
+  - from: S@waitBio
+    to: A@acquireBiometric@784
+    through: E@onBiometricEnroll
+  - from: S@waitBio
+    to: A@Cancel@170
+    through: E@onBiometricTimeout
+  - from: S@waitPic
+    to: A@acquirePicture@802
+    through: E@onBiometricEnroll
+  - from: S@waitPic
+    to: A@Cancel@590
+    through: E@onBiometricError
+  - from: S@waitPic
+    to: A@Cancel@590
+    through: E@Timeout
+  - from: S@waitPic
+    to: A@Cancel@590
+    through: E@onBiometricTimeout
+  - from: S@waitUid
+    to: A@readBadge@273
+    through: E@readerInput
+  - from: S@waitUid
+    to: A@Cancel@982
+    through: E@Timeout
+  states:
+    S@waitUid:
+      timeout: 10
+    S@waitBio: &id001
+      timeout: 60
+TURNOMATIC:
+  name: Turn-O-matic
+  edges:
+  - from: A@checkUid@603
+    to: A@sendPermission@968
+    status: NO_AUTH
+  - from: A@sendPermission@968
+    to: S@Start
+  - from: A@startTransit@310
+    to: A@checkUid@603
+    checks:
+    - BADGE
+  - from: S@Start
+    to: A@startTransit@310
+    through: E@readerInput
+VIRTUAL@OPEN@TELEPASS:
+  name: VirtualeTelepass
+  edges:
+  - from: A@checkUid@603
+    to: A@setTransitStatus@968
+    through: L@ALLOWED
+    status: AUTH
+  - from: A@checkUid@603
+    to: A@setTransitStatus@968
+    status: NO_AUTH
+  - from: A@setTransitStatus@968
+    to: S@Start
+  - from: A@startTransit@310
+    to: A@checkUid@603
+    checks:
+    - TELEPASS
+  - from: S@Start
+    to: A@startTransit@310
+    through: E@readerInput
+DEBUG:
+  name: Debug
+  edges:
+  - from: A@dummyAction@371
+    to: S@Start
+  - from: S@CatchAllBegin
+    to: S@CatchAllEnd
+    through: E@operatorOpen
+  - from: S@CatchAllBegin
+    to: S@CatchAllEnd
+    through: E@readerInputPlate
+  - from: S@CatchAllBegin
+    to: S@CatchAllEnd
+    through: E@readerInput
+'@OPEN@UID+BIO':
+  name: Badge +Bio
+  edges:
+  - from: A@checkUid@0-961
+    to: A@setTransitStatus@0-620
+    status: OPERATOR_AUTH
+  - from: A@checkUid@603
+    to: A@setTransitStatus@620
+    through: L@ALLOWED
+    status: AUTH
+  - from: A@checkUid@603
+    to: A@setTransitStatus@478
+    through: L@BIOMETRIC
+    status: WAIT_BIO_AUTH
+  - from: A@checkUid@603
+    to: A@setTransitStatus@968
+    status: NO_AUTH
+  - from: A@openGate@0-407
+    to: S@Start
+  - from: A@openGate@407
+    to: S@Start
+  - from: A@readPlateIN@0-021
+    to: A@checkUid@0-961
+    checks:
+    - PEOPLE
+  - from: A@readPlateIN@0-279
+    to: A@setTransitStatus@0-413
+    status: OPERATOR_AUTH
+  - from: A@readPlateIN@827
+    to: A@checkUid@603
+    checks:
+    - BADGE
+  - from: A@setTransitStatus@0-413
+    to: S@Start
+  - from: A@setTransitStatus@0-620
+    to: A@openGate@0-407
+  - from: A@setTransitStatus@478
+    to: A@verifyBio@497
+  - from: A@setTransitStatus@620
+    to: A@openGate@407
+  - from: A@setTransitStatus@968
+    to: S@Start
+  - from: A@startTransit@0-059
+    to: A@readPlateIN@0-021
+  - from: A@startTransit@0-946
+    to: A@readPlateIN@0-279
+  - from: A@startTransit@310
+    to: A@readPlateIN@827
+  - from: A@verifyBio@497
+    to: S@waitBio
+  - from: S@Start
+    to: A@startTransit@310
+    through: E@readerInput
+  - from: S@waitBio
+    to: A@setTransitStatus@620
+    through: E@onBiometricAuth
+    status: AUTH
+  - from: S@waitBio
+    to: A@setTransitStatus@968
+    through: E@onBiometricError
+    status: NO_AUTH
+  - from: S@waitBio
+    to: A@setTransitStatus@968
+    through: E@onBiometricTimeout
+    status: NO_AUTH
+  - from: S@waitBio
+    to: A@setTransitStatus@968
+    through: E@onBiometricNoAuth
+    status: NO_AUTH
+  - from: S@waitBio
+    to: A@setTransitStatus@968
+    through: E@Timeout
+    status: NO_AUTH
+  - from: S@CatchAllBegin
+    to: A@startTransit@0-946
+    through: E@operatorOpen
+  - from: S@CatchAllBegin
+    to: A@startTransit@0-059
+    through: E@operatorSoftOpen
+  states:
+    S@waitBio: *id001
+'@OPEN@UID+BIO+OPERATOR': !include automatons/uid_bio_operator.yaml

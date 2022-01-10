@@ -1,0 +1,31 @@
+%YAML 1.1
+---
+WAIT_OPERATOR_AUTH:
+  name: Attesa Operatore
+  color: yellow
+WAIT_BIOMETRIC_VERIFY:
+  name: Attesa Verifica Biometrica
+  color: yellow
+OPERATOR_SOFT_AUTH:
+  name: Autorizzato Software
+  color: green
+  timeout: 15
+AUTH:
+  name: Autorizzato
+  color: green
+  timeout: 15
+OPERATOR_AUTH:
+  name: Autorizzato Operatore
+  color: green
+  timeout: 15
+WAIT_OPERATOR_NO_AUTH:
+  name: Attesa Operatore
+  color: yellow
+NO_AUTH:
+  name: Negato
+  color: red
+  timeout: 15
+OPERATOR_NO_AUTH:
+  name: Negato Operatore
+  color: red
+  timeout: 15

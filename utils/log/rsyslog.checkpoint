@@ -1,0 +1,3 @@
+:programname, isequal, "checkpoint" /var/log/checkpoint.log
+& @@remotehost
+& ~ 

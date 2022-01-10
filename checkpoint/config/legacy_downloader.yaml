@@ -1,0 +1,9 @@
+# url: https://apnet.porto.laspezia.it/igate/xmlrpcmobile/
+# disabled: false
+url: http://172.16.102.12:8080/igate/xmlrpcmobile/
+http_timeout: 10
+username: vgate
+password: !secret vgate_password
+repositories:
+  MOBILE:
+    interval: 60.0

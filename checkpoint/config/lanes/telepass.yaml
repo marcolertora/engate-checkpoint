@@ -1,0 +1,40 @@
+initial_security_level: LEVEL00
+lanes:
+  STAGNONI:
+    type: TELEPASS
+    direction: THROUGH
+    initial_status: OPENED
+    device_links:
+      - device: TELEPASS01
+        event: E@tagRead
+        unit: 1
+
+  STAGNONI_AUTOSTRADA:
+    type: TELEPASS
+    direction: THROUGH
+    initial_status: OPENED
+    device_links:
+      - device: TELEPASS01
+        event: E@tagRead
+        unit: 2
+
+  RAVANO:
+    type: TELEPASS
+    direction: THROUGH
+    initial_status: OPENED
+    device_links:
+      - device: TELEPASS01
+        event: E@tagRead
+        unit: 3
+      - device: TELEPASS01
+        event: E@tagRead
+        unit: 4
+
+  SUBALVEA:
+    type: TELEPASS
+    direction: THROUGH
+    initial_status: OPENED
+    device_links:
+      - device: TELEPASS01
+        event: E@tagRead
+        unit: 5

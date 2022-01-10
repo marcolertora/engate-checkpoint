@@ -1,0 +1,232 @@
+openapi: 3.0.1
+info:
+  title: enGate
+  description: enGate Api
+  contact:
+    email: marco.lertora@gmail.com
+  license:
+    name: GNU Affero General Public License 3.0
+    url: https://www.gnu.org/licenses/agpl-3.0.html
+  version: 0.9.1
+servers:
+- url: https://checkpoint/v2
+
+paths:
+  /transit:
+    post:
+      summary: Add new Transit
+      requestBody:
+        required: true
+        description: Transit object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transit'
+
+      responses:
+        200:
+          $ref: '#/components/responses/Successful'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /get_owner_by_credential/{code}:
+      get:
+        summary: Lookup owner by credential code
+        description: Lookup owner and relateds object by credential code...
+        parameters:
+          - in: path
+            name: code
+            schema:
+              type: string
+            required: true
+            description: The code of the credential
+        responses:
+          200:
+            description: Success Match
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Owner'
+          401:
+            $ref: '#/components/responses/UnauthorizedError'
+
+
+components:
+  schemas:
+    Transit:
+      type: object
+      required:
+      - id
+      - direction
+      - site
+      - gate
+      - lane
+      - lane_type
+      - lane_status
+      - security_level
+      properties:
+        id:
+          type: string
+          format: uuid
+        granted:
+          type: boolean
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        direction:
+          type: string
+          enum:
+          - IN
+          - OUT
+          - THROUGH
+        start_date:
+          type: string
+          format: date-time
+        end_date:
+          type: string
+          format: date-time
+        site:
+          type: string
+        gate:
+          type: string
+        lane:
+          type: string
+        lane_type:
+          type: string
+        lane_status:
+          type: string
+        security_level:
+          type: string
+        operator:
+          type: string
+          nullable: true
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransitMember'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransitItem'
+
+    TransitMember:
+      type: object
+      required:
+      - owner
+      - status
+      properties:
+        owner:
+          $ref: '#/components/schemas/Owner'
+        status:
+          type: string
+        status_message:
+          type: string
+        credential_type:
+          type: string
+          nullable: true
+        credential_code_type:
+          type: string
+          nullable: true
+        permission_type:
+          type: string
+          nullable: true
+        permission_reference:
+          type: string
+          nullable: true
+
+    TransitItem:
+      type: object
+      required:
+      - id
+      - item_type
+      properties:
+        id:
+          type: string
+          format: uuid
+        item_type:
+          type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachments'
+        details:
+          type: object
+          additionalProperties: true
+
+    Owner:
+      type: object
+      required:
+      - name
+      - owner_type
+      properties:
+        name:
+          type: string
+          example: John Smith
+        owner_type:
+          type: string
+          enum:
+          - OwnerPerson
+          - OwnerVehicle
+          - OwnerUnknown
+          example: OwnerPerson
+        birthday_date:
+          type: string
+          format: date
+        birthday_country:
+          type: string
+          example: IT
+        plate:
+          type: string
+        company:
+          $ref: '#/components/schemas/Company'
+
+    Company:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Acme
+        company_type:
+          type: string
+        city:
+          type: string
+
+    Attachments:
+      type: object
+      required:
+      - id
+      - filename
+      - content_type
+      - stream
+      properties:
+        id:
+          type: string
+          format: uuid
+        filename:
+          type: string
+        content_type:
+          type: string
+        stream:
+          type: string
+          format: byte
+
+  securitySchemes:
+    engate_auth:
+        type: http
+        scheme: basic
+
+  responses:
+    UnauthorizedError:
+      description: Unauthorized
+    Successful:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: string
+
+security:
+  - engate_auth: []

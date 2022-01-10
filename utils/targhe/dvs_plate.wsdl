@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="dvs"
+ targetNamespace="urn:dvs"
+ xmlns:tns="urn:dvs"
+ xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:ns="urn:dvs"
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+ xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+ <schema targetNamespace="urn:dvs" xmlns="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Oggetto DIME -->
+  <xsd:complexType name="DimeData">
+    <xsd:complexContent>
+      <xsd:restriction base="soapenc:Array">
+         <xsd:attribute ref="soapenc:arrayType"
+                        wsdl:arrayType="xsd:unsignedByte[]"/>
+      </xsd:restriction>
+    </xsd:complexContent>
+    <xsd:element name="id"       type="xsd:string"/>
+    <xsd:element name="type"     type="xsd:string"/>
+    <xsd:element name="options"  type="xsd:string"/>
+  </xsd:complexType>
+
+  <!-- Array di telecamere -->
+  <xsd:complexType name="CamerasCntxArray">
+    <xsd:complexContent>
+      <xsd:restriction base="soapenc:Array">
+         <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:int[]"/>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- Array di oggetti dime -->
+  <xsd:complexType name="DimeDataArray">
+    <xsd:complexContent>
+      <xsd:restriction base="soapenc:Array">
+         <xsd:attribute ref="soapenc:arrayType"
+                        wsdl:arrayType="ns:DimeData[]"/>
+      </xsd:restriction>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+ </schema>
+</types>
+
+<!-- Messaggi per metodo "getDimePlateArray" -->
+<message name="getDimePlateArrayRequest">
+ <part name="cameraId" type="xsd:int"/>
+ <part name="camerasCntx" type="ns:CamerasCntxArray"/>
+</message>
+
+<message name="getDimePlateArrayResponse">
+ <part name="return"   type="ns:DimeDataArray"/>
+</message>
+
+<portType name="DvsPort">
+
+ <!-- Definizione metodo getDimePlateArray -->
+ <operation name="getDimePlateArray">
+  <documentation>Cattura la targa e le immagini di contesto.</documentation>
+  <input message="tns:getDimePlateArrayRequest"/>
+  <output message="tns:getDimePlateArrayResponse"/>
+ </operation>
+ 
+</portType>
+
+<binding name="dvs" type="tns:DvsPort">
+ <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+<!-- binding per metodo "getDimePlateArray" -->
+ <operation name="getDimePlateArray">
+  <soap:operation style="rpc" soapAction=""/>
+  <input>
+   <soap:body use="encoded" namespace="urn:dvs" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </input>
+  <output>
+   <soap:body use="encoded" namespace="urn:dvs" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </output>
+ </operation>
+
+</binding>
+
+<service name="DvsService">
+ <documentation>SOAP generated service definition</documentation>
+ <port name="DvsPort" binding="tns:dvs">
+  <soap:address location="http://xxx.xxx.xxx.xxx:pppp/dvs.cgi"/>
+ </port>
+</service>
+
+</definitions>
+

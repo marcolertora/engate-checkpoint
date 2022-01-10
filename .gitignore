@@ -1,0 +1,17 @@
+.idea/*
+!.idea/runConfigurations
+*.pyc
+*.db
+*.db-journal
+*.pid
+*.tdb
+*.ini
+*.history
+/venv/
+/__pycache__/
+/dist/
+/build/
+/*.egg-info
+checkpoint/invalid_packets/
+checkpoint/config/database/
+checkpoint/config/user_config/

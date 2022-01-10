@@ -1,0 +1,8 @@
+%YAML 1.1
+---
+EMERGENCY:
+  name: Corsia in Emergenza
+CLOSED:
+  name: Corsia Chiusa
+OPENED:
+  name: Corsia Aperta

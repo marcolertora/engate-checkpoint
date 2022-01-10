@@ -1,0 +1,8 @@
+JTIS:
+  name: Jtis Event Loop
+  edges:
+  - from: S@Start
+    to: A@startTransit@01
+    through: E@eventReceived
+  - from: A@startTransit@01
+    to: S@Start

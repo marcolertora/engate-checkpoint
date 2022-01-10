@@ -1,0 +1,11 @@
+%YAML 1.1
+---
+LSCT:
+  gates:
+    # JTIS: !include lanes/jtis.yaml
+    # TELEPASS:  !include lanes/telepass.yaml
+    # VARCO_MERCI: !include lanes/varco_merci.yaml
+    VARCO_FERROVIA: !include lanes/varco_ferrovia.yaml
+    # VARCO_PORTA_ROCCA: !include lanes/varco_porta_rocca.yaml
+    # VARCO_CANALETTO: !include lanes/varco_canaletto.yaml
+    # TEST: !include lanes/test.yaml

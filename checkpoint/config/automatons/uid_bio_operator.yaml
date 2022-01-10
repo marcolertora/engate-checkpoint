@@ -1,0 +1,83 @@
+%YAML 1.1
+---
+UID_BIO_OPERATOR:
+  edges:
+  - from: A@checkUid@603
+    to: A@setTransitStatus@968
+    through: L@ALLOWED
+    status: WAIT_OPERATOR_AUTH
+  - from: A@checkUid@603
+    to: A@setTransitStatus@478
+    through: L@BIOMETRIC_REQUIRED
+    status: WAIT_BIOMETRIC_VERIFY
+  - from: S@Start
+    to: A@startTransit@310
+    through: E@uidRead
+  - from: S@waitOperator
+    to: A@setTransitStatus@498
+    through: E@Timeout
+    status: OPERATOR_NO_AUTH
+  - from: S@waitOperator
+    to: A@setTransitStatus@498
+    through: E@operatorOpen
+    status: OPERATOR_AUTH
+  - from: S@waitOperator
+    to: A@setTransitStatus@498
+    through: E@preUidRead
+    status: OPERATOR_NO_AUTH
+  - from: S@waitBio
+    to: A@setTransitStatus@968
+    through: E@bioVerified
+    status: WAIT_OPERATOR_AUTH
+  - from: S@waitBio
+    to: A@setTransitStatus@968
+    through: E@bioNotVerified
+    status: WAIT_OPERATOR_NO_AUTH
+  - from: S@waitBio
+    to: A@setTransitStatus@968
+    through: E@Timeout
+    status: WAIT_OPERATOR_AUTH
+  - from: S@CatchAllBegin
+    to: A@startTransit@0-059
+    through: E@operatorSoftOpen
+  - from: S@CatchAllBegin
+    to: A@startTransit@0-946
+    through: E@operatorOpen
+  - from: A@checkUid@603
+    to: A@setTransitStatus@968
+    status: WAIT_OPERATOR_NO_AUTH
+  - from: A@readPlate@827
+    to: A@checkUid@603
+  - from: A@startTransit@310
+    to: A@readPlate@827
+  - from: A@verifyBio@497
+    to: S@waitBio
+  - from: A@setTransitStatus@478
+    to: A@verifyBio@497
+  - from: A@setTransitStatus@968
+    to: S@waitOperator
+  - from: A@setTransitStatus@498
+    to: S@Start
+  - from: A@readPlate@0-021
+    to: A@checkUid@0-961
+  - from: A@startTransit@0-059
+    to: A@readPlate@0-021
+  - from: A@setTransitStatus@0-620
+    to: A@openGate@0-407
+  - from: A@openGate@0-407
+    to: S@Start
+  - from: A@startTransit@0-946
+    to: A@readPlate@0-279
+  - from: A@readPlate@0-279
+    to: A@setTransitStatus@0-413
+    status: OPERATOR_AUTH
+  - from: A@setTransitStatus@0-413
+    to: S@Start
+  - from: A@checkUid@0-961
+    to: A@setTransitStatus@0-620
+    status: OPERATOR_AUTH
+  states:
+    S@waitOperator:
+      timeout: 10
+    S@waitBio:
+      timeout: 30

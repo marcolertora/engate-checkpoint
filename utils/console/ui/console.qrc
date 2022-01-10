@@ -1,0 +1,13 @@
+<RCC>
+  <qresource prefix="/console">
+    <file>icons/lights_all.svg</file>
+    <file>icons/lights_green.svg</file>
+    <file>icons/lights_off.svg</file>
+    <file>icons/lights_red.svg</file>
+    <file>icons/lights_yellow.svg</file>
+    <file>icons/nopicture.svg</file>
+    <file>icons/padlock.svg</file>
+    <file>icons/tile.png</file>
+    <file>icons/car.png</file>	
+  </qresource>
+</RCC>

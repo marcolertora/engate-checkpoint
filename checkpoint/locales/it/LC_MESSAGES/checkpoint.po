@@ -1,0 +1,83 @@
+# engate-checkpoint
+#
+# Copyright (C) 2018 Marco Lertora <marco.lertora@gmail.com>
+# This file is distributed under the same license as the PACKAGE package.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-05 19:58+0100\n"
+"PO-Revision-Date: 2019-12-03 00:27+CET\n"
+"Last-Translator: Marco Lertora <marco.lertora@gmail.com>\n"
+"Language-Team: Italian <marco.lertora@gmail.com>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+
+#: device/devices/legacy/__init__.py:112 device/devices/legacy/__init__.py:117
+msgid "Authorized by operator"
+msgstr "Autorizzato operatore"
+
+#: authenticator/authenticator.py:67
+msgid "invalid credential date"
+msgstr "permesso con data non valida"
+
+#: authenticator/authenticator.py:70
+msgid "credential not yet valid"
+msgstr "titolo di accesso non ancora valido"
+
+#: authenticator/authenticator.py:73
+msgid "credential is expired"
+msgstr "titolo di accesso scaduto"
+
+#: authenticator/authenticator.py:76
+msgid "invalid permission date"
+msgstr "permesso con data non valida"
+
+#: authenticator/authenticator.py:79
+msgid "permission not yet valid"
+msgstr "permesso non ancora valido"
+
+#: authenticator/authenticator.py:82
+msgid "permission is expired"
+msgstr "permesso scaduto"
+
+#: authenticator/authenticator.py:85
+msgid "permission is disabled"
+msgstr "permesso disabilitato"
+
+#: authenticator/authenticator.py:88
+msgid "company is disabled"
+msgstr "società disabilitata"
+
+#: authenticator/authenticator.py:95
+msgid "invalid vehicle"
+msgstr "veicolo non valido"
+
+#: authenticator/authenticator.py:102
+msgid "pass back detected"
+msgstr "pass back rilevato"
+
+#: authenticator/authenticator.py:111
+msgid "not allowed in this lane"
+msgstr "non abilitato in questa corsia"
+
+#: authenticator/authenticator.py:117
+msgid "valid but pin check is required"
+msgstr "valido, controllo pin richiesto"
+
+#: authenticator/authenticator.py:123
+msgid "valid but biometric check is required"
+msgstr "valido, controllo biometrico richiesto"
+
+#: authenticator/authenticator.py:129
+msgid "valid but operator check is required"
+msgstr "valido, controllo operatore richiesto"
+
+#: authenticator/authenticator.py:131
+msgid "valid"
+msgstr "valido"

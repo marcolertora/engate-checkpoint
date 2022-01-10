@@ -1,0 +1,15 @@
+VPR-L1:
+  direction: OUT
+  type: VEHICLE
+  status: OPENED
+  tags:
+  - PROFILES
+  device_links:
+  - device: IGATE
+    node: A@checkUid
+  - device: VPR-BR
+    node: E@readerInput
+    port: '1'
+  - device: VPR-BR
+    node: A@openGate
+    port: '1'

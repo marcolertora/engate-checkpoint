@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+ xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:ns1="urn:dvs">
+ <SOAP-ENV:Body>
+  <ns1:getDimePlateArrayResponse>
+   <param-14 SOAP-ENC:arrayType="ns1:DimeData[1]">
+    <item></item>
+   </param-14>
+  </ns1:getDimePlateArrayResponse>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+

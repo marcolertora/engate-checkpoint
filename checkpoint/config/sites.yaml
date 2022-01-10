@@ -1,0 +1,1150 @@
+%YAML 1.1
+---
+LSCT:
+  gates:
+    VARCO-PORTA-ROCCA:
+      initial_security_level: LEVEL1
+      latitude: 44.110842
+      longitude: 9.844954
+      consoles: []
+      lanes:
+        VPR-L2:
+          direction: IN
+          type: VEHICLE
+          initial_status: OPENED
+          device_links:
+          - device: IGATE
+            action: A@checkUid
+          - device: VPR-BR
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '2'
+          - device: VPR-BR
+            event: E@readerInput
+            port: '2'
+        VPR-L1:
+          direction: OUT
+          type: VEHICLE
+          initial_status: OPENED
+          device_links:
+          - device: IGATE
+            action: A@checkUid
+          - device: VPR-BR
+            event: E@readerInput
+            port: '1'
+          - device: VPR-BR
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '1'
+    VARCO-MERCI:
+      initial_security_level: LEVEL1
+      latitude: 44.110842
+      longitude: 9.844954
+      consoles: []
+      lanes:
+        VM-L1:
+          direction: IN
+          type: VEHICLE
+          initial_status: OPENED
+          device_links:
+          - device: VM-L1-BR
+            event: E@readerInput
+            port: '2'
+          - device: VM-L1-BR
+            event: E@readerInput
+            port: '1'
+          - device: VM-L1-BR
+            action: A@openGate
+            flag: true
+            pulse: 1.0
+            port: '1'
+          - device: VM-L1-BCR
+            event: E@readerInput
+          - device: IGATESPETER
+            action: A@checkUid
+          - device: VF-BR
+            event: E@readerInput
+        VM-L2:
+          direction: OUT
+          type: VEHICLE
+          initial_status: OPENED
+          device_links:
+          - device: VM-L2-BR
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '1'
+          - device: VM-L2-BR
+            event: E@readerInput
+            port: '1'
+          - device: VM-L2-BR
+            event: E@readerInput
+            port: '2'
+          - device: VM-L2-BCR
+            event: E@readerInput
+          - device: IGATESPETER
+            action: A@checkUid
+    VARCO-FERROVIA:
+      initial_security_level: LEVEL1
+      consoles: []
+      lanes:
+        VF-L1:
+          direction: OUT
+          type: VEHICLE
+          initial_status: OPENED
+          device_links:
+          - device: IGATESPETER
+            action: A@checkUid
+          - device: VF-BR
+            event: E@readerInput
+            port: '1'
+          - device: VF-BR
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '1'
+        VF-L2:
+          direction: IN
+          type: VEHICLE
+          initial_status: OPENED
+          device_links:
+          - device: IGATESPETER
+            action: A@checkUid
+          - device: VF-BR
+            event: E@readerInput
+            port: '2'
+          - device: VF-BR
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '2'
+ADSP:
+  gates:
+    ENROLL:
+      initial_security_level: LEVEL1
+      latitude: 44.110842
+      longitude: 9.844954
+      consoles: []
+      lanes:
+        EVC1:
+          direction: IN
+          type: ENROLL
+          initial_status: OPENED
+          device_links:
+          - device: BADGE049
+            event: E@readerInput
+            port: '1'
+          - device: BIO049
+            action: enroll
+          - device: BIO049
+            action: verify
+          - device: BIO049
+            event: E@onBiometricEnroll
+            port: enroll
+          - device: BIO049
+            event: E@onBiometricTimeout
+            port: timeout
+          - device: BIO049
+            event: E@onBiometricNoAuth
+            port: noauth
+          - device: BIO049
+            event: E@onBiometricAuth
+            port: auth
+          - device: BIO049
+            event: E@onBiometricError
+            port: error
+          - device: MASTER001
+            action: A@acquireBiometric
+            port: acquireBiometric
+            remotemethod: ClientService.onGateAcquireBiometric
+          - device: MASTER001
+            action: A@verifyBiometric
+            port: verifyBiometric
+            remotemethod: ClientService.onGateVerifyBiometric
+          - device: MASTER001
+            event: E@verifyBiometric
+            port: verifyBiometric
+          - device: MASTER001
+            event: E@acquireBiometric
+            port: acquireBiometric
+          - device: MASTER001
+            action: A@Cancel
+            port: Cancel
+            remotemethod: ClientService.onError
+          - device: MASTER001
+            action: A@readBadge
+            port: readBadge
+            remotemethod: ClientService.onGateReadBadge
+          - device: MASTER001
+            event: E@readBadge
+            port: readBadge
+        EVC2:
+          direction: IN
+          type: ENROLL
+          initial_status: OPENED
+          device_links:
+          - device: MASTER001
+            event: E@acquireBiometric
+            port: acquireBiometric
+          - device: MASTER001
+            action: A@Cancel
+            port: Cancel
+            remotemethod: ClientService.onError
+          - device: MASTER001
+            action: A@readBadge
+            port: readBadge
+            remotemethod: ClientService.onGateReadBadge
+          - device: MASTER001
+            action: A@acquireBiometric
+            port: acquireBiometric
+            remotemethod: ClientService.onGateAcquireBiometric
+          - device: MASTER001
+            action: A@verifyBiometric
+            port: verifyBiometric
+            remotemethod: ClientService.onGateVerifyBiometric
+          - device: MASTER001
+            event: E@verifyBiometric
+            port: verifyBiometric
+          - device: MASTER001
+            event: E@readBadge
+            port: readBadge
+          - device: BADGE050
+            event: E@readerInput
+            port: '1'
+    TRUCK-VILLAGE-STAGNONI:
+      initial_security_level: LEVEL1
+      latitude: 44.110842
+      longitude: 9.844954
+      consoles: []
+      lanes:
+        VTVS-L3:
+          direction: OUT
+          type: VEHICLE
+          initial_status: OPENED
+          disabled: true
+          device_links:
+          - device: VTVS-L3-BCR
+            event: E@readerInput
+          - device: VTVS-L3-BR
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '2'
+          - device: VTVS-L3-BR
+            event: E@readerInput
+            port: '1'
+          - device: VTVS-L3-BR
+            event: E@readerInput
+            port: '2'
+          - device: IGATEPARK
+            action: A@checkUid
+        VTVS-L2:
+          direction: IN
+          type: VEHICLE
+          initial_status: OPENED
+          disabled: true
+          device_links:
+          - device: VTVS-L2-BCR
+            event: E@readerInput
+          - device: VTVS-L2-BR
+            event: E@readerInput
+            port: '1'
+          - device: VTVS-L2-BR
+            event: E@readerInput
+            port: '2'
+          - device: VTVS-L2-BR
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '2'
+          - device: IGATEPARK
+            action: A@checkUid
+        VTVS-L1:
+          direction: IN
+          type: VEHICLE
+          initial_status: OPENED
+          disabled: true
+          device_links:
+          - device: VTVS-L1-BCR
+            event: E@readerInput
+          - device: VTVS-L1-BR
+            event: E@readerInput
+            port: '2'
+          - device: VTVS-L1-BR
+            event: E@readerInput
+            port: '1'
+          - device: VTVS-L1-BR
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '1'
+          - device: IGATEPARK
+            action: A@checkUid
+    TRUCK-VILLAGE-AUTOSTRADA:
+      initial_security_level: LEVEL1
+      latitude: 44.110842
+      longitude: 9.844954
+      consoles: []
+      lanes:
+        VTVA-L1:
+          direction: OUT
+          type: VEHICLE
+          initial_status: OPENED
+          disabled: true
+          device_links:
+          - device: IGATE
+            action: A@checkUid
+          - device: VTVA-L1-BCR
+            event: E@readerInput
+          - device: VTVA-L1-BR
+            event: E@readerInput
+            port: '1'
+          - device: VTVA-L1-BR
+            event: E@readerInput
+            port: '2'
+          - device: VTVA-L1-BR
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '1'
+    ENROLL-PARK:
+      initial_security_level: LEVEL1
+      latitude: 44.110842
+      longitude: 9.844954
+      consoles: []
+      lanes:
+        EPC1:
+          direction: IN
+          type: ENROLL
+          initial_status: OPENED
+          device_links:
+          - device: BADGE048
+            event: E@readerInput
+            port: '1'
+          - device: MASTER002
+            action: A@Cancel
+            port: Cancel
+            remotemethod: ClientService.onError
+          - device: MASTER002
+            event: E@verifyBiometric
+            port: verifyBiometric
+          - device: MASTER002
+            action: A@acquireBiometric
+            port: acquireBiometric
+            remotemethod: ClientService.onGateAcquireBiometric
+          - device: MASTER002
+            action: A@readBadge
+            port: readBadge
+            remotemethod: ClientService.onGateReadBadge
+          - device: MASTER002
+            event: E@readBadge
+            port: readBadge
+          - device: MASTER002
+            action: A@verifyBiometric
+            port: verifyBiometric
+            remotemethod: ClientService.onGateVerifyBiometric
+          - device: MASTER002
+            event: E@acquireBiometric
+            port: acquireBiometric
+    Portali:
+      initial_security_level: LEVEL1
+      latitude: 44.110842
+      longitude: 9.844954
+      consoles: []
+      lanes:
+        TELEPASS-RAVANO-OUT:
+          direction: OUT
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: TELEPASS001
+            event: E@readerInput
+            port: '00003'
+          - device: TELEPASS001
+            event: E@readerInput
+            port: '00004'
+          - device: IGATE
+            action: A@checkUid
+        LSCT-INTERCHANGE-WAIT:
+          direction: IN
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: JTIS001
+            event: E@readerInput
+            port: WAIT
+          - device: IGATE
+            action: A@checkUid
+        TELEPASS-STAGNONI-IN:
+          direction: IN
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: TELEPASS001
+            event: E@readerInput
+            port: '00001'
+          - device: IGATE
+            action: A@checkUid
+        TELEPASS-SUBALVEA-OUT:
+          direction: IN
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: TELEPASS001
+            event: E@readerInput
+            port: '00005'
+          - device: IGATE
+            action: A@checkUid
+        LSCT-INTERCHANGE-DESK:
+          direction: IN
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: JTIS001
+            event: E@readerInput
+            port: COUNTER
+          - device: IGATE
+            action: A@checkUid
+        TELEPASS-PORT-IN:
+          direction: IN
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: TELEPASS001
+            event: E@readerInput
+            port: '00002'
+          - device: IGATE
+            action: A@checkUid
+        LSCT-INTERCHANGE-RID:
+          direction: IN
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: JTIS001
+            event: E@readerInput
+            port: RID
+          - device: IGATE
+            action: A@checkUid
+        LSCT-OUT:
+          direction: IN
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: JTIS001
+            event: E@readerInput
+            port: GATEOUT
+          - device: IGATE
+            action: A@checkUid
+        LSCT-INTERCHANGE-BOOKING:
+          direction: IN
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: JTIS001
+            event: E@readerInput
+            port: BOOKING
+          - device: IGATE
+            action: A@checkUid
+        LSCT-IN:
+          direction: IN
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: JTIS001
+            event: E@readerInput
+            port: GATEIN
+          - device: IGATE
+            action: A@checkUid
+        LSCT-INTERCHANGE-REMOVED:
+          direction: IN
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: JTIS001
+            event: E@readerInput
+            port: REMOVED
+          - device: IGATE
+            action: A@checkUid
+        LSCT-INTERCHANGE-PROCESSED:
+          direction: IN
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: JTIS001
+            event: E@readerInput
+            port: SERVING
+          - device: IGATE
+            action: A@checkUid
+        LSCT-INTERCHANGE-REQUEUED:
+          direction: IN
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: JTIS001
+            event: E@readerInput
+            port: QUEUE
+          - device: IGATE
+            action: A@checkUid
+    TERMINAL-DEL-GOLFO:
+      initial_security_level: LEVEL1
+      latitude: 44.110842
+      longitude: 9.844954
+      consoles: []
+      lanes: {}
+    TURN-O-MATIC:
+      initial_security_level: LEVEL1
+      latitude: 44.110842
+      longitude: 9.844954
+      consoles: []
+      lanes:
+        TOM1:
+          direction: THROUGH
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: IGATE
+            action: A@checkUid
+          - device: TOM1-BR
+            event: E@readerInput
+            port: '1'
+          - device: TOM
+            action: A@sendPermission
+            port: TOM1
+        TOM2:
+          direction: THROUGH
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: IGATE
+            action: A@checkUid
+          - device: TOM1-BR
+            event: E@readerInput
+            port: '2'
+          - device: TOM
+            action: A@sendPermission
+            port: TOM2
+        TOM3:
+          direction: THROUGH
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: IGATE
+            action: A@checkUid
+          - device: TOM1-BR
+            event: E@readerInput
+            port: '3'
+          - device: TOM
+            action: A@sendPermission
+            port: TOM3
+        TOM4:
+          direction: THROUGH
+          type: VIRTUAL
+          initial_status: OPENED
+          device_links:
+          - device: IGATE
+            action: A@checkUid
+          - device: TOM1-BR
+            event: E@readerInput
+            port: '4'
+          - device: TOM
+            action: A@sendPermission
+            port: TOM4
+    TEST:
+      initial_security_level: LEVEL1
+      latitude: 44.110842
+      longitude: 9.844954
+      consoles: []
+      lanes:
+        TEST:
+          direction: IN
+          type: VEHICLE
+          initial_status: OPENED
+          device_links: []
+    VARCO-CANALETTO:
+      initial_security_level: LEVEL1_MANUAL
+      latitude: 44.110842
+      longitude: 9.844954
+      consoles:
+      - CANALETTO
+      lanes:
+        VCL3 DX:
+          direction: OUT
+          type: WALK
+          initial_status: OPENED
+          disabled: true
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: IO002
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '12'
+          - device: IO002
+            event: E@operatorOpen
+            flag: true
+            port: '2'
+          - device: IGATE
+            action: A@checkUid
+        VCL2 DX:
+          direction: IN
+          type: WALK
+          initial_status: OPENED
+          disabled: true
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: IO002
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '6'
+          - device: IO002
+            event: E@operatorOpen
+            flag: true
+            port: '1'
+          - device: IGATE
+            action: A@checkUid
+        VCL4 SX:
+          direction: IN
+          type: WALK
+          initial_status: OPENED
+          disabled: true
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: BIO008
+            event: E@onBiometricNoAuth
+            port: noauth
+          - device: BIO008
+            event: E@onBiometricTimeout
+            port: timeout
+          - device: BIO008
+            event: E@onBiometricAuth
+            port: auth
+          - device: BIO008
+            action: verify
+          - device: IO002
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '5'
+          - device: IO002
+            event: E@operatorOpen
+            flag: true
+            port: '3'
+          - device: IGATE
+            action: A@checkUid
+        VCL9:
+          direction: OUT
+          type: WALK
+          initial_status: OPENED
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: BADGE007
+            event: E@beforeReaderInput
+            port: '1'
+          - device: BADGE007
+            event: E@readerInput
+            port: '1'
+          - device: IO004
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '3'
+          - device: IO004
+            event: E@operatorOpen
+            flag: true
+            port: '3'
+          - device: IGATE
+            action: A@checkUid
+        VCL8:
+          direction: IN
+          type: WALK
+          initial_status: OPENED
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: BADGE006
+            event: E@beforeReaderInput
+            port: '1'
+          - device: BADGE006
+            event: E@readerInput
+            port: '1'
+          - device: BIO011
+            event: E@onBiometricAuth
+            port: auth
+          - device: BIO011
+            event: E@onBiometricTimeout
+            port: timeout
+          - device: BIO011
+            event: E@onBiometricNoAuth
+            port: noauth
+          - device: BIO011
+            action: verify
+          - device: IO004
+            event: E@operatorOpen
+            flag: true
+            port: '2'
+          - device: IO004
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '2'
+          - device: IGATE
+            action: A@checkUid
+        VCL7:
+          direction: OUT
+          type: VEHICLE
+          initial_status: OPENED
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: BADGE004
+            event: E@beforeReaderInput
+            port: '1'
+          - device: BADGE004
+            event: E@readerInput
+            port: '1'
+          - device: IO004
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '1'
+          - device: IO004
+            event: E@operatorOpen
+            flag: true
+            port: '1'
+          - device: TARGET007
+            action: A@readPlateIN
+          - device: IGATE
+            action: A@checkUid
+        VCL1:
+          direction: IN
+          type: VEHICLE
+          initial_status: OPENED
+          disabled: true
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: BIO001
+            action: verify
+          - device: BIO003
+            action: verify
+          - device: BADGE010
+            event: E@beforeReaderInput
+            port: '1'
+          - device: BADGE010
+            event: E@readerInput
+            port: '1'
+          - device: BIO006
+            event: E@onBiometricTimeout
+            port: timeout
+          - device: BIO006
+            event: E@onBiometricNoAuth
+            port: noauth
+          - device: BIO006
+            event: E@onBiometricAuth
+            port: auth
+          - device: BIO006
+            action: verify
+          - device: TARGET003
+            action: A@readPlateIN
+          - device: IO002
+            event: E@operatorOpen
+            flag: true
+            port: '0'
+          - device: IO002
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '4'
+          - device: IGATE
+            action: A@checkUid
+        VCL5 SX:
+          direction: OUT
+          type: WALK
+          initial_status: OPENED
+          disabled: true
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: IO002
+            event: E@operatorOpen
+            flag: true
+            port: '8'
+          - device: IO002
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '7'
+          - device: IGATE
+            action: A@checkUid
+        VCL6:
+          direction: IN
+          type: VEHICLE
+          initial_status: OPENED
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: BADGE011
+            event: E@beforeReaderInput
+            port: '1'
+          - device: BADGE011
+            event: E@beforeReaderInput
+            port: '2'
+          - device: BADGE011
+            event: E@readerInput
+            port: '1'
+          - device: BADGE011
+            event: E@readerInput
+            port: '2'
+          - device: IO004
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '0'
+          - device: IO004
+            event: E@operatorOpen
+            flag: true
+            port: '0'
+          - device: IGATE
+            action: A@checkUid
+    VARCO-STAGNONI:
+      initial_security_level: LEVEL1_MANUAL
+      latitude: 44.110842
+      longitude: 9.844954
+      consoles:
+      - STAGNONI_SX
+      - STAGNONI_DX
+      lanes:
+        VSL3:
+          direction: IN
+          type: WALK
+          initial_status: OPENED
+          disabled: true
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: BADGE001
+            event: E@beforeReaderInput
+            port: '1'
+          - device: BADGE001
+            event: E@readerInput
+            port: '1'
+          - device: BIO002
+            event: E@onBiometricAuth
+            port: auth
+          - device: BIO002
+            event: E@onBiometricTimeout
+            port: timeout
+          - device: BIO002
+            event: E@onBiometricNoAuth
+            port: noauth
+          - device: BIO002
+            action: verify
+          - device: IO001
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '6'
+          - device: IO001
+            event: E@operatorOpen
+            flag: true
+            port: '2'
+          - device: IGATE
+            action: A@checkUid
+        VSL2 SX:
+          direction: IN
+          type: VEHICLE
+          initial_status: OPENED
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: IO001
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '4'
+          - device: IO001
+            event: E@operatorOpen
+            flag: true
+            port: '0'
+          - device: TARGET001
+            action: A@readPlateIN
+          - device: BIO003
+            event: E@onBiometricNoAuth
+            port: noauth
+          - device: BIO003
+            action: verify
+          - device: BIO003
+            event: E@onBiometricAuth
+            port: auth
+          - device: BIO003
+            event: E@onBiometricTimeout
+            port: timeout
+          - device: BIO005
+            action: verify
+          - device: BIO005
+            event: E@onBiometricNoAuth
+            port: noauth
+          - device: BIO005
+            event: E@onBiometricAuth
+            port: auth
+          - device: BIO005
+            event: E@onBiometricTimeout
+            port: timeout
+          - device: IGATE
+            action: A@checkUid
+          - device: VS-L2-BR
+            event: E@beforeReaderInput
+            port: '1'
+          - device: VS-L2-BR
+            event: E@beforeReaderInput
+            port: '2'
+          - device: VS-L2-BR
+            event: E@readerInput
+            port: '1'
+          - device: VS-L2-BR
+            event: E@readerInput
+            port: '2'
+        VSL4:
+          direction: OUT
+          type: WALK
+          initial_status: OPENED
+          disabled: true
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: IO001
+            event: E@operatorOpen
+            flag: true
+            port: '3'
+          - device: IO001
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '7'
+          - device: BADGE021
+            event: E@beforeReaderInput
+            port: '1'
+          - device: BADGE021
+            event: E@readerInput
+            port: '1'
+          - device: IGATE
+            action: A@checkUid
+        VSL1 DX:
+          direction: IN
+          type: VEHICLE
+          initial_status: OPENED
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: IO001
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '5'
+          - device: IO001
+            event: E@operatorOpen
+            flag: true
+            port: '1'
+          - device: TARGET002
+            action: A@readPlateIN
+          - device: BIO001
+            event: E@onBiometricNoAuth
+            port: noauth
+          - device: BIO001
+            action: verify
+          - device: BIO001
+            event: E@onBiometricAuth
+            port: auth
+          - device: BIO001
+            event: E@onBiometricTimeout
+            port: timeout
+          - device: BIO004
+            event: E@onBiometricAuth
+            port: auth
+          - device: BIO004
+            event: E@onBiometricNoAuth
+            port: noauth
+          - device: BIO004
+            event: E@onBiometricTimeout
+            port: timeout
+          - device: BIO004
+            action: verify
+          - device: IGATE
+            action: A@checkUid
+          - device: VS-L1-BR
+            event: E@beforeReaderInput
+            port: '2'
+          - device: VS-L1-BR
+            event: E@beforeReaderInput
+            port: '1'
+          - device: VS-L1-BR
+            event: E@readerInput
+            port: '2'
+          - device: VS-L1-BR
+            event: E@readerInput
+            port: '1'
+    VARCO-RAVANO:
+      initial_security_level: LEVEL1_MANUAL
+      latitude: 44.110842
+      longitude: 9.844954
+      consoles:
+      - RAVANO
+      lanes:
+        VRL2 DX:
+          direction: IN
+          type: VEHICLE
+          initial_status: OPENED
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: BADGE016
+            event: E@beforeReaderInput
+            port: '1'
+          - device: BADGE016
+            event: E@readerInput
+            port: '1'
+          - device: BIO012
+            event: E@onBiometricTimeout
+            port: timeout
+          - device: BIO012
+            event: E@onBiometricNoAuth
+            port: noauth
+          - device: BIO012
+            event: E@onBiometricAuth
+            port: auth
+          - device: BIO012
+            action: verify
+          - device: IO003
+            event: E@operatorOpen
+            flag: true
+            port: '1'
+          - device: IO003
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '5'
+          - device: TARGET004
+            action: A@readPlateIN
+          - device: IGATE
+            action: A@checkUid
+        VRL3:
+          direction: IN
+          type: WALK
+          initial_status: OPENED
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: BADGE014
+            event: E@beforeReaderInput
+            port: '1'
+          - device: BADGE014
+            event: E@readerInput
+            port: '1'
+          - device: IO003
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '6'
+          - device: IO003
+            event: E@operatorOpen
+            flag: true
+            port: '2'
+          - device: BIO009
+            event: E@onBiometricNoAuth
+            port: noauth
+          - device: BIO009
+            event: E@onBiometricAuth
+            port: auth
+          - device: BIO009
+            event: E@onBiometricTimeout
+            port: timeout
+          - device: BIO009
+            action: verify
+          - device: IGATE
+            action: A@checkUid
+        VRL4:
+          direction: OUT
+          type: WALK
+          initial_status: OPENED
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: IO003
+            event: E@operatorOpen
+            flag: true
+            port: '3'
+          - device: IO003
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '7'
+          - device: BADGE008
+            event: E@beforeReaderInput
+            port: '1'
+          - device: BADGE008
+            event: E@readerInput
+            port: '1'
+          - device: IGATE
+            action: A@checkUid
+        VRL1 SX:
+          direction: IN
+          type: VEHICLE
+          initial_status: OPENED
+          device_links:
+          - device: MASTER001
+            event: E@operatorSoftOpen
+            port: authPeople
+          - device: IO003
+            event: E@operatorOpen
+            flag: true
+            port: '0'
+          - device: IO003
+            action: A@openGate
+            flag: true
+            pulse: 0.5
+            port: '4'
+          - device: BIO010
+            event: E@onBiometricNoAuth
+            port: noauth
+          - device: BIO010
+            action: verify
+          - device: BIO010
+            event: E@onBiometricAuth
+            port: auth
+          - device: BIO010
+            event: E@onBiometricTimeout
+            port: timeout
+          - device: TARGET005
+            action: A@readPlateIN
+            disabled: true
+          - device: IGATE
+            action: A@checkUid
+          - device: VR-L1-BR
+            event: E@beforeReaderInput
+            port: '1'
+          - device: VR-L1-BR
+            event: E@readerInput
+            port: '1'

@@ -1,0 +1,15 @@
+# this config file is read every gate update_config_interval.
+# it can be used to change attributes at runtime.
+# security_level and default_message are currently supported
+#
+# GATE01:
+#   security_level: NEW_LEVEL
+#   default_message: new default message
+
+VARCO_CANALETTO:
+  security_level: LEVEL2
+  default_message: asdsa
+
+
+VARCO_FERROVIA:
+  security_level: LEVEL01

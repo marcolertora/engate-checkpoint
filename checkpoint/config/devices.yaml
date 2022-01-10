@@ -1,0 +1,316 @@
+%YAML 1.1
+---
+TOM1-BR:
+  factory: FKLIGHT
+  host: cs011
+  port: 4002
+  units:
+  - 1
+JTIS001:
+  factory: JTIS
+  listen_port: 6666
+VTVA-L1-BR:
+  factory: FKLIGHT
+  host: cs010
+  port: 4002
+  units:
+  - 1
+  - 2
+VM-L1-BR:
+  factory: FKLIGHT
+  host: cs005
+  port: 4002
+  anteunitsnnas:
+  - 1
+  - 2
+TARGET001:
+  factory: TARGET
+  url: http://target001:8888/
+  disabled: true
+TARGET002:
+  factory: TARGET
+  url: http://target002:8888/
+  disabled: true
+TARGET003:
+  factory: TARGET
+  url: http://target003:8888/
+TARGET004:
+  factory: TARGET
+  url: http://target004:8888/
+TARGET005:
+  factory: TARGET
+  url: http://target005:8888/
+  disabled: true
+TARGET006:
+  factory: TARGET
+  url: http://target006:8888/
+  disabled: true
+TARGET007:
+  factory: TARGET
+  url: http://target007:8888/
+  disabled: true
+LEGACY002:
+  factory: LEGACY
+  username: vgate
+  password: '51595716877496'
+BIO049:
+  factory: HGR
+  host: bio049
+  port: 3001
+#RID:
+#  factory: RID
+#  private_key: |
+#    -----BEGIN RSA PRIVATE KEY-----
+#    MIICXQIBAAKBgQCmubfbu42YQofhXyZxHQDIG77DYwoTyQ3qjlO5kn0m11Np5nzg
+#    x4MGbUg7dP3rJbiUwJ7BNl+iTU/iImu8UWFJwQfabEfljPPo1ag3IA9E/uE3jWKZ
+#    wT16KZQgsGLtNe2Ize/3BpSX0JCJeI6MCGqrdXFzXM5kUeJfP9xTfmBkbQIDAQAB
+#    AoGAJCe6G0h82Dv1Q4Ziy7zCYqLBp5VephO/lNHwjhmaUkX3rMty4Tviyg4A0AP6
+#    3Hd9o6RxyOyFqKijXiKgwmHTetVcHnlmHBxMBykCpS3+kjYHvRDyGiFm3TlrH5lG
+#    xm9qut4O2cbacIVBkaYTQDXwxiAP7UCnschqXv9YdY8SbXECQQDWIGsqeMebx2G+
+#    6wXTbKM8a0eBaX8q5DXDkZ/dMftqQhB9Up3MFWvRYaAgO7jLUtyjeaF9BfOwtr01
+#    SMctORR/AkEAx1ROznGRCZjU0GJLuxhcXOeUYnM/jw21qKbDUlHgm5ccN/El0yus
+#    1LUFBPGDmZb6ZX4+qXBZSGZdohxuIsChEwJBALoRP66Pd7zZXAngBpb7PznAa0l8
+#    WAH4fvOrtoQq67MhJ10PjomKT7+JmvCHlQQxxALWLcsLggAcO3xy+olEoZcCQQCw
+#    ZxVDMFBKLP4R2RvqXRnIgo3YPuQ95sUgl0z+ekWLjMTFYV23L8zJhdYGVPLBJ1M8
+#    JOixrSLmpukwgXaavN0PAkA0Nou8SQQ5DGgKXFIBpbZuNBIr04MHuyQz+UO3S4ym
+#    t4ZwMx6gqMWd9MVuimQdZI1o3zV3F40qvuX76JpRrnIP
+#    -----END RSA PRIVATE KEY-----
+BIO001:
+  factory: HGR
+  host: bio001
+  port: 3001
+  disabled: true
+BIO002:
+  factory: HGR
+  host: bio002
+  port: 3001
+  disabled: true
+BIO003:
+  factory: HGR
+  host: bio003
+  port: 3001
+BIO004:
+  factory: HGR
+  host: bio004
+  port: 3001
+  disabled: true
+BIO005:
+  factory: HGR
+  host: bio005
+  port: 3001
+  disabled: true
+BIO006:
+  factory: HGR
+  host: bio006
+  port: 3001
+BIO007:
+  factory: HGR
+  host: bio007
+  port: 3001
+BIO008:
+  factory: HGR
+  host: bio008
+  port: 3001
+BIO009:
+  factory: HGR
+  host: bio009
+  port: 3001
+  disabled: true
+VTVS-L2-BCR:
+  factory: GFS4400
+  host: cs008
+  port: 4001
+BADGE022:
+  factory: FKLIGHT
+  host: badge022
+  port: 1470
+BADGE050:
+  factory: FKLIGHT
+  host: cs013
+  port: 4002
+  disabled: true
+VR-L1-BR:
+  factory: FKLIGHT
+  host: cs015
+  port: 4002
+  disabled: true
+VM-L2-BR:
+  factory: FKLIGHT
+  host: cs004
+  port: 4002
+  units:
+  - 1
+  - 2
+BADGE010:
+  factory: FKLIGHT
+  host: badge010
+  port: 1470
+BADGE011:
+  factory: FKLIGHT
+  host: badge011
+  port: 4002
+  units:
+  - 1
+  - 2
+BADGE012:
+  factory: FKLIGHT
+  host: badge012
+  port: 1470
+  disabled: true
+BADGE013:
+  factory: FKLIGHT
+  host: badge013
+  port: 1470
+BADGE014:
+  factory: FKLIGHT
+  host: badge014
+  port: 1470
+  disabled: true
+BADGE016:
+  factory: FKLIGHT
+  host: badge016
+  port: 1470
+  disabled: true
+VS-L1-BR:
+  factory: FKLIGHT
+  host: cs012
+  port: 4002
+  units:
+  - 1
+  - 2
+#IGATE:
+#  factory: IGATE
+TELEPASS001:
+  factory: MONTRAF
+  listen_port: 4023
+VS-L2-BR:
+  factory: FKLIGHT
+  host: cs017
+  port: 4002
+  units:
+  - 1
+  - 2
+VM-L1-BCR:
+  factory: GFS4400
+  host: cs005
+  port: 4001
+  mirror: true
+IO004:
+  factory: E1212
+  host: io004
+  port: 502
+VM-L2-BCR:
+  factory: GFS4400
+  host: cs004
+  port: 4001
+  mirror: true
+VTVS-L1-BR:
+  factory: FKLIGHT
+  host: cs007
+  port: 4002
+  units:
+  - 1
+  - 2
+VTVS-L2-BR:
+  factory: FKLIGHT
+  host: cs008
+  port: 4002
+  units:
+  - 2
+VTVS-L3-BR:
+  factory: FKLIGHT
+  host: cs009
+  port: 4002
+  units:
+  - 2
+VPR-BR:
+  factory: FKLIGHT
+  host: 127.0.0.1
+  port: 4002
+  units:
+  - 1
+  - 2
+VTVS-L1-BCR:
+  factory: GFS4400
+  host: cs007
+  port: 4001
+VTVS-L3-BCR:
+  factory: GFS4400
+  host: cs009
+  port: 4001
+VTVA-L1-BCR:
+  factory: GFS4400
+  host: cs010
+  port: 4001
+BIO012:
+  factory: HGR
+  host: bio012
+  port: 3001
+  disabled: true
+BIO011:
+  factory: HGR
+  host: bio011
+  port: 3001
+BIO010:
+  factory: HGR
+  host: bio010
+  port: 3001
+  disabled: true
+BADGE021:
+  factory: FKLIGHT
+  host: badge021
+  port: 1470
+BADGE009:
+  factory: FKLIGHT
+  host: badge009
+  port: 1470
+  disabled: true
+BADGE008:
+  factory: FKLIGHT
+  host: badge008
+  port: 1470
+  disabled: true
+VF-BR:
+  factory: FKLIGHT
+  host: cs016
+  port: 4002
+  units:
+  - 1
+  - 2
+LEGACY001:
+  factory: LEGACY
+  listen_port: 9999
+BADGE003:
+  factory: FKLIGHT
+  host: badge003
+  port: 1470
+  interval: 1.0
+BADGE002:
+  factory: FKLIGHT
+  host: badge002
+  port: 1470
+BADGE001:
+  factory: FKLIGHT
+  host: badge001
+  port: 1470
+BADGE048:
+  factory: FKLIGHT
+  host: cs014
+  port: 4002
+  disabled: true
+BADGE007:
+  factory: FKLIGHT
+  host: badge007
+  port: 1470
+BADGE006:
+  factory: FKLIGHT
+  host: badge006
+  port: 1470
+BADGE049:
+  factory: FKLIGHT
+  host: badge049
+  port: 1470
+BADGE004:
+  factory: FKLIGHT
+  host: badge004
+  port: 1470

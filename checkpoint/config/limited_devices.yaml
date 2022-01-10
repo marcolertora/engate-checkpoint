@@ -1,0 +1,83 @@
+LEGACY01:
+  factory: LEGACY
+  username: vgate
+  password: '51595716877496'
+
+JTIS01:
+  factory: JTIS
+
+TELEPASS01:
+  factory: MONTRAF
+
+VM_L1_BADGE:
+  factory: FKLIGHT
+  host: 172.16.50.125
+  port: 4002
+  units: [1, 2]
+
+VM_L1_BARCODE:
+  factory: GFS4400
+  host: 172.16.50.125
+  port: 4001
+  mirror: true
+
+VM_L2_BARCODE:
+  factory: GFS4400
+  host: 172.16.50.124
+  port: 4001
+  mirror: true
+
+VM_L2_BADGE:
+  factory: FKLIGHT
+  host: 172.16.50.124
+  port: 4002
+  units: [1, 2]
+
+VF_BADGE:
+  factory: FKLIGHT
+  host: 172.16.50.136
+  port: 4002
+  units:
+  - 1
+  - 2
+
+VPR_BADGE:
+  factory: FKLIGHT
+  host: 172.16.50.123
+  port: 4002
+  units:
+  - 1
+  - 2
+
+
+
+VC_L1_BADGE:
+  factory: FKLIGHT
+  host: 172.16.50.156
+  port: 1470
+  units: [1]
+
+VC_L2_BADGE:
+  factory: FKLIGHT
+  host: 172.16.50.157
+  port: 1470
+  units: [1]
+
+VC_L3_BADGE:
+  factory: FKLIGHT
+  host: 172.16.50.161
+  port: 4002
+  units: [1,2]
+
+VC_L4_BADGE:
+  factory: FKLIGHT
+  host: 172.16.50.154
+  port: 1470
+
+VC_L1_BIOMETRIC:
+  factory: HGR
+  host: 172.16.50.111
+
+VC_IO:
+  factory: E1212
+  host: 172.16.50.84

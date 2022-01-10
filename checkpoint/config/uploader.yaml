@@ -1,0 +1,24 @@
+#buffer_size: 100
+interval: 10.0
+#disabled: True
+endpoints:
+  Command: &endpoint_template
+    base_url: http://172.16.102.12:8080/igate/xmlrpccheckpoint
+    method: addCommand
+    username: vgate
+    password: !secret vgate_password
+    #http_timeout: 10
+  Transit:
+    <<: *endpoint_template
+    #url: http://igate.porto.laspezia.it/igate/xmlrpccheckpoint
+    #url: http://192.168.123.178:8082/xmlrpc
+    method: CheckpointService.addTransit
+  SimpleTransit:
+    <<: *endpoint_template
+    method: CheckpointService.addTransit
+  LaneLog:
+    <<: *endpoint_template
+    method: CheckpointService.addLaneLog
+  DeviceLog:
+    <<: *endpoint_template
+    method: CheckpointService.addDeviceLog

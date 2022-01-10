@@ -1,0 +1,4 @@
+JTIS: !include automatons/jtis.yaml
+TELEPASS: !include automatons/telepass.yaml
+UID_BIO_OPERATOR: !include automatons/uid_bio_operator.yaml
+UID: !include automatons/uid.yaml

@@ -1,0 +1,16 @@
+image_server_url: http://localhost:8888/
+lane_types: !include limited_lane_types.yaml
+sites: {} #!include limited_sites.yaml
+devices: {} #!include limited_devices.yaml
+consoles: !include consoles.yaml
+security_levels: !include security_levels.yaml
+lane_status: !include lane_status.yaml
+automatons: !include automatons/*.yaml
+transit_status: !include transit_status.yaml
+downloader: !include mixed_downloader.yaml
+publisher: !include publisher.yaml
+uploader: !include uploader.yaml
+backend: !include backend.yaml
+runtime_config_filename: !relative_path runtime_config.yaml
+user_config_folder: !relative_path user_config/
+invalid_packets_folder: !relative_path invalid_packets/

@@ -1,0 +1,117 @@
+initial_security_level: LEVEL01
+consoles: [LOCALHOST]
+lanes:
+  L1:
+    direction: IN
+    legacy_lane_id: 35
+    type: WALK
+    initial_status: OPENED
+    disable_check_zone: true
+    device_links:
+    - device: LEGACY01
+      event: E@operatorSoftOpen
+      key: auth_person
+    - device: VC_L1_BADGE
+      event: E@uidRead
+      unit: 1
+    - device: VC_IO
+      action: A@openGate
+      operation: set
+      unit: 1
+      port: DO2
+      value: true
+      duration: 0.5
+    - device: VC_IO
+      event: E@operatorOpen
+      unit: 1
+      port: DO2
+      value: true
+    - device: VC_L1_BIOMETRIC
+      action: A@verifyBiometric
+    - device: VC_L1_BIOMETRIC
+      event: E@bioVerified
+      key: AUTH
+    - device: VC_L1_BIOMETRIC
+      event: E@bioNotVerified
+      key: NO_AUTH
+    - device: VC_L1_BIOMETRIC
+      event: E@bioNotVerified
+      key: FAILURE
+  L2:
+    direction: OUT
+    legacy_lane_id: 36
+    type: WALK
+    initial_status: OPENED
+    disable_check_zone: true
+    device_links:
+    - device: LEGACY01
+      event: E@operatorSoftOpen
+      key: auth_person
+    - device: VC_L2_BADGE
+      event: E@uidRead
+      unit: 1
+    - device: VC_IO
+      action: A@openGate
+      operation: set
+      unit: 1
+      port: DO3
+      value: true
+      duration: 0.5
+    - device: VC_IO
+      event: E@operatorOpen
+      unit: 1
+      port: DO3
+      value: true
+  L3:
+    direction: IN
+    legacy_lane_id: 33
+    type: VEHICLE
+    initial_status: OPENED
+    disable_check_zone: true
+    device_links:
+    - device: LEGACY01
+      event: E@operatorSoftOpen
+      key: auth_person
+    - device: VC_L3_BADGE
+      event: E@uidReaded
+      unit: 2
+    - device: VC_L3_BADGE
+      event: E@uidReaded
+      unit: 1
+    - device: VC_IO
+      action: A@openGate
+      operation: set
+      unit: 1
+      port: DO0
+      value: true
+      duration: 0.5
+    - device: VC_IO
+      event: E@operatorOpen
+      unit: 1
+      port: DO0
+      value: true
+  L4:
+    direction: OUT
+    legacy_lane_id: 34
+    type: VEHICLE
+    initial_status: OPENED
+    disable_check_zone: true
+    device_links:
+    - device: LEGACY01
+      event: E@operatorSoftOpen
+      key: auth_person
+    - device: VC_L4_BADGE
+      event: E@uidReaded
+      unit: 1
+    - device: VC_IO
+      action: A@openGate
+      operation: set
+      unit: 1
+      port: DO1
+      value: true
+      duration: 0.5
+    - device: VC_IO
+      event: E@operatorOpen
+      unit: 1
+      port: DO1
+      value: true

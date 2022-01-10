@@ -1,0 +1,7 @@
+*.ncb
+*.suo
+*.vcproj.*.user
+Debug
+Release
+dvsC.cpp
+dvsClient.cpp

@@ -1,0 +1,54 @@
+initial_security_level: LEVEL00
+consoles: [LOCALHOST]
+lanes:
+  L1:
+    direction: IN
+    legacy_lane_id: 1
+    type: VEHICLE
+    initial_status: OPENED
+    disable_check_zone: true
+    device_links:
+    - device: LEGACY01
+      event: E@operatorSoftOpen
+      key: auth_person
+    - device: VM_L1_BARCODE
+      event: E@uidRead
+    - device: VM_L1_BADGE
+      event: E@uidRead
+      unit: 2
+    - device: VM_L1_BADGE
+      event: E@uidRead
+      unit: 1
+    - device: VM_L1_BADGE
+      action: A@openGate
+      operation: set
+      unit: 1
+      port: 0
+      value: true
+      duration: 1.0
+  L2:
+    direction: OUT
+    legacy_lane_id: 1
+    type: VEHICLE
+    initial_status: OPENED
+    disable_check_zone: true
+    device_links:
+    - device: LEGACY01
+      event: E@operatorSoftOpen
+      key: auth_person
+    - device: VM_L2_BARCODE
+      event: E@uidRead
+    - device: VM_L2_BADGE
+      event: E@uidRead
+      unit: 2
+    - device: VM_L2_BADGE
+      event: E@uidRead
+      unit: 1
+    - device: VM_L2_BADGE
+      action: A@openGate
+      operation: set
+      unit: 1
+      port: 0
+      value: true
+      duration: 1.0
+

@@ -1,0 +1,90 @@
+%YAML 1.1
+---
+ENROLL:
+  name: Acquisizione
+  default:
+    automaton: DEBUG
+    check_operator: false
+WALK:
+  name: Pedonale
+  default:
+    automaton: DEBUG
+    check_operator: true
+  overrides:
+  - selectors:
+      security_level: LEVEL0
+    config:
+      automaton: DEBUG
+      check_zone: true
+  - selectors:
+      security_level: LEVEL1
+    config:
+      automaton: '@OPEN@UID+BIO'
+      check_zone: true
+  - selectors:
+      security_level: LEVEL1_MANUAL
+    config:
+      automaton: '@OPEN@UID+BIO'
+      check_zone: true
+  - selectors:
+      security_level: LEVEL2
+    config:
+      automaton: '@OPEN@UID+BIO'
+      check_zone: true
+  - selectors:
+      security_level: LEVEL2_MANUAL
+    config:
+      automaton: '@OPEN@UID+BIO'
+      check_zone: true
+  - selectors:
+      security_level: LEVEL2_MANUAL
+      direction: OUT
+    config:
+      automaton: '@OPEN@UID+BIO'
+      check_zone: true
+  - selectors:
+      security_level: LEVEL2
+      direction: OUT
+    config:
+      automaton: '@OPEN@UID+BIO'
+      check_zone: true
+VIRTUAL:
+  name: Virtuale
+  default:
+    automaton: DEBUG
+    check_operator: false
+VEHICLE:
+  name: Veicolare
+  default:
+    automaton: DEBUG
+    check_operator: true
+  overrides:
+  - selectors:
+      security_level: LEVEL0
+    config:
+      automaton: DEBUG
+      check_zone: true
+  - selectors:
+      security_level: LEVEL2_MANUAL
+    config:
+      automaton: '@OPEN@UID+BIO+OPERATOR'
+      check_zone: true
+  - selectors:
+      security_level: LEVEL2
+    config:
+      automaton: '@OPEN@UID+BIO'
+      check_zone: true
+  - selectors:
+      security_level: LEVEL1_MANUAL
+    config:
+      automaton: '@OPEN@UID+BIO+OPERATOR'
+      check_zone: true
+  - selectors:
+      security_level: LEVEL1
+    config:
+      automaton: '@OPEN@UID+BIO'
+      check_zone: true
+  - selectors: {}
+    config:
+      automaton: '@OPEN@UID+BIO'
+      check_zone: true

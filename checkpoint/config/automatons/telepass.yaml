@@ -1,0 +1,8 @@
+TELEPASS:
+  name: Telepass Gate
+  edges:
+  - from: S@Start
+    to: A@startTransit@01
+    through: E@tagRead
+  - from: A@startTransit@01
+    to: S@Start

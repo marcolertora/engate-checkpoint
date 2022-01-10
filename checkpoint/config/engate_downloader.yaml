@@ -1,0 +1,7 @@
+# url: https://apnet.porto.laspezia.it/igate/xmlrpcmobile/
+# disabled: false
+base_url: https://engate.adspmarligureorientale.it
+#url: http://localhost:8080
+http_timeout: 10
+username: admin
+password: m3t0d0

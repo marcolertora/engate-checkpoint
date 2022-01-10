@@ -1,0 +1,8 @@
+[console]
+listenport=3001
+watchdog=10
+cleanup=10
+loglines=100
+fullscreen=true
+; cleanlooks, plastique
+style=cleanlooks

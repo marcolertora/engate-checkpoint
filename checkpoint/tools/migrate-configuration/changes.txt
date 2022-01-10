@@ -1,0 +1,21 @@
+#python and database
+attachprefix=attach_prefix
+listenport=listen_port
+maxdelay=max_delay
+privateKey=private_key
+ridHoursTTL=num_of_hours
+ports=units
+
+#java and database
+update-parkingslot=update-parking-slot
+command_date=command_timestamp
+lanelog_date=lanelog_timestamp
+
+
+io:
+checkport checkflag -- acion: check port flag
+pulse -> duration
+textcolor color
+textdelay delay
+textduration duration
+textmessage message

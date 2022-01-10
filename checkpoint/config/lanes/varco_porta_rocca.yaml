@@ -1,0 +1,39 @@
+initial_security_level: LEVEL00
+consoles: [LOCALHOST]
+lanes:
+  L1:
+    direction: IN
+    type: VEHICLE
+    initial_status: OPENED
+    device_links:
+    - device: LEGACY01
+      event: E@operatorSoftOpen
+      key: auth_person
+    - device: VPR_BADGE
+      event: E@uidRead
+      unit: 2
+    - device: VPR_BADGE
+      action: A@openGate
+      operation: set
+      unit: 2
+      port: 0
+      value: true
+      duration: 1.0
+  L2:
+    direction: OUT
+    type: VEHICLE
+    initial_status: OPENED
+    device_links:
+    - device: LEGACY01
+      event: E@operatorSoftOpen
+      key: auth_person
+    - device: VPR_BADGE
+      event: E@uidRead
+      unit: 1
+    - device: VPR_BADGE
+      action: A@openGate
+      operation: set
+      unit: 1
+      port: 0
+      value: true
+      duration: 1.0

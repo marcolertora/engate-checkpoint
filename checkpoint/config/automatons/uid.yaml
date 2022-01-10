@@ -1,0 +1,58 @@
+UID:
+  name: Uid (badge or barcode)
+  edges:
+  - from: S@Start
+    through: E@uidRead
+    to: A@startTransit@01
+  - from: A@startTransit@01
+    to: A@checkUid@01
+  - from: A@checkUid@01
+    through: L@ALLOWED
+    to: A@setTransitStatus@01
+    status: AUTH
+  - from: A@setTransitStatus@01
+    to: A@openGate@01
+  - from: A@openGate@01
+    to: S@Start
+
+  - from: A@checkUid@01
+    through: L@OPERATOR_REQUIRED
+    to: A@setTransitStatus@05
+    status: WAIT_OPERATOR_AUTH
+  - from: A@setTransitStatus@05
+    to: S@waitOperator
+  - from: S@waitOperator
+    through: E@operatorOpen
+    to: A@setTransitStatus@051
+    status: OPERATOR_AUTH
+  - from: A@setTransitStatus@051
+    to: A@openGate@05
+  - from: A@openGate@05
+    to: S@Start
+
+
+  - from: A@checkUid@01
+    to: A@setTransitStatus@02
+    status: NO_AUTH
+  - from: A@setTransitStatus@02
+    to: S@Start
+
+  - from: S@CatchAllBegin
+    through: E@operatorSoftOpen
+    to: A@startTransit@03
+  - from: A@startTransit@03
+    to: A@setTransitStatus@03
+    status: OPERATOR_SOFT_AUTH
+  - from: A@setTransitStatus@03
+    to: A@openGate@03
+  - from: A@openGate@03
+    to: S@Start
+
+  - from: S@CatchAllBegin
+    through: E@operatorOpen
+    to: A@startTransit@04
+  - from: A@startTransit@04
+    to: A@setTransitStatus@04
+    status: OPERATOR_AUTH
+  - from: A@setTransitStatus@04
+    to: S@Start

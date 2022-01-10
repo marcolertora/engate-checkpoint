@@ -1,0 +1,11 @@
+[Unit]
+Description=XmlDas
+After=networkmanager.service
+
+[Service]
+Type=simple
+ExecStart=/opt/igate-automa/svil/icpdas/server/xmldas.py
+User=root
+
+[Install]
+WantedBy=multi-user.target

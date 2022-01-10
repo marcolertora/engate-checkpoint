@@ -1,0 +1,9 @@
+initial_security_level: LEVEL00
+lanes:
+  JTIS01:
+    type: JTIS
+    direction: THROUGH
+    initial_status: OPENED
+    device_links:
+      - device: JTIS01
+        event: E@eventReceived

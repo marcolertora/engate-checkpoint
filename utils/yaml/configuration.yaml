@@ -1,0 +1,77 @@
+pippo_secret: !secret pippo_secret
+aa_pippo_secret: !include warehouse.yaml
+
+template:
+  - &CENTER {x: 1, y: 2}
+  - &BIG {r: 3}
+
+# single line inherit from CENTER, cannot override and add
+cc0: *CENTER
+
+# inherit from CENTER and override
+cc1: &obj1
+  <<: *CENTER
+  x: 10
+  z: 40
+
+# inherit from CENTER and BIG and override
+cc2:
+  <<: [*CENTER, *BIG]
+  x: 400
+
+superscript_two: \u00B2
+
+lines: |
+       line 1
+       line 2
+
+literal_block: >
+    This entire block of text will be the value of 'folded_style', but this
+    time, all ne
+
+? - Manchester United
+  - Real Madrid
+: [2001-01-01, 2002-02-02]
+
+anchored_content: &anchor_name This string will appear as the value of two keys.
+other_anchor: *anchor_name
+
+
+force style: !!map
+  var_timestamp: !!timestamp 2002-12-14
+  var_float: !!float 1
+  var_str : !!str value
+
+
+#ManagerLegacy:
+#  vacuum_threshold: 100
+#  interval: 10#
+#
+#  default_endpoint: &obj10
+#    url: https://asdsadsda/igate/xmlrpcmobile/
+#    username: foo
+#    password: bar
+#    http_timeout: 10
+#  endpoints:
+#    Command:
+#      url: https://asdsadsda/igate/xmlrpcmobile/command/
+#      <<: *obj10
+#      method: addCommand
+#    Transit:
+##      method: addTransit
+#      http_timeout: 10
+#    SimpleTransit:
+#      method: addTransit
+#    LaneLog:
+#      method: addLaneLog
+#    DeviceLog:
+#      method: addDeviceLog
+
+#
+#warehouse:
+#  obj1: &obj1
+#    key1: 1
+#    key2: 2#
+##
+#
+#warehouase: !include warehouse.yaml

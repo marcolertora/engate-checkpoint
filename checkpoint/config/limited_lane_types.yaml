@@ -1,0 +1,38 @@
+JTIS:
+  default:
+    automaton: JTIS
+
+TELEPASS:
+  default:
+    automaton: TELEPASS
+
+VEHICLE:
+  name: Veicolare
+  default:
+    automaton: UID
+
+  overrides:
+  - selectors:
+      security_level: LEVEL01
+    config:
+      automaton: UID_BIO_OPERATOR
+      check_operator: true
+
+  - selectors:
+      security_level: LEVEL02
+    config:
+      automaton: UID_BIO_OPERATOR
+      check_operator: true
+      check_biometric: true
+
+WALK:
+  name: Pedonale
+  default:
+    automaton: UID
+
+  overrides:
+    - selectors:
+        security_level: LEVEL02
+      config:
+        automaton: UID_BIO_OPERATOR
+        check_biometric: true

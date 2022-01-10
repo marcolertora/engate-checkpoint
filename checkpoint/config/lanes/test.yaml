@@ -1,0 +1,26 @@
+initial_security_level: LEVEL2_MANUAL
+latitude: 44.110842
+longitude: 9.844954
+consoles: [RAVANO]
+lanes:
+  TEST01:
+    direction: IN
+    legacy_lane_id: 10
+    type: VEHICLE
+    initial_status: OPENED
+    device_links:
+    - device: VPR-BR
+      action: A@openGate
+      value: true
+      duration: 0.5
+      port: '2'
+    - device: VPR-BR
+      event: E@readerInput
+      port: '2'
+    - device: VPR-BR
+      event: E@readerInputB
+      port: '1'
+    - device: LEGACY01
+      event: E@operatorSoftOpen
+      key: auth_person
+

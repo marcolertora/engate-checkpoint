@@ -1,0 +1,19 @@
+%YAML 1.1
+---
+LEVEL00:
+  name: Livello 0
+LEVEL01:
+  name: Livello 1
+LEVEL02:
+  name: Livello 2
+
+LEVEL0:
+  name: ''
+LEVEL1:
+  name: ''
+LEVEL2:
+  name: ''
+LEVEL2_MANUAL:
+  name: ''
+LEVEL1_MANUAL:
+  name: ''
